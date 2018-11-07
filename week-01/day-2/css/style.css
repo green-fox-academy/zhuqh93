@@ -1,0 +1,43 @@
+body{
+    font-family: consolas, courier;
+    background-image: url(background.png);
+}
+
+#header{
+    background-color: #333333;
+}
+
+#img{
+    display: inline-block;
+    padding-left: 10%;
+    margin-top: 3px;
+}
+
+#links{
+    display: inline-block;
+    padding-right: 10%;
+    margin: 10px;
+    float: right;
+}
+
+.link{
+    color: #ff0099;
+    text-decoration: underline;
+    margin: 10px;
+}
+
+#content{
+    padding: 10%;
+} 
+
+h3{
+    color: #ff0099;
+}
+
+h2{
+    text-align: center;
+}
+
+h1, h2{
+    font-family: 'Courier New', Courier, monospace;
+}
