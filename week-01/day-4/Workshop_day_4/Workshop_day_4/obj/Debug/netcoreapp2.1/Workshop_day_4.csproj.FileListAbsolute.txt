@@ -1,0 +1,11 @@
+C:\Users\Jimmy_Zhu\source\repos\Workshop_day_4\Workshop_day_4\bin\Debug\netcoreapp2.1\Workshop_day_4.deps.json
+C:\Users\Jimmy_Zhu\source\repos\Workshop_day_4\Workshop_day_4\bin\Debug\netcoreapp2.1\Workshop_day_4.runtimeconfig.json
+C:\Users\Jimmy_Zhu\source\repos\Workshop_day_4\Workshop_day_4\bin\Debug\netcoreapp2.1\Workshop_day_4.runtimeconfig.dev.json
+C:\Users\Jimmy_Zhu\source\repos\Workshop_day_4\Workshop_day_4\bin\Debug\netcoreapp2.1\Workshop_day_4.dll
+C:\Users\Jimmy_Zhu\source\repos\Workshop_day_4\Workshop_day_4\bin\Debug\netcoreapp2.1\Workshop_day_4.pdb
+C:\Users\Jimmy_Zhu\source\repos\Workshop_day_4\Workshop_day_4\obj\Debug\netcoreapp2.1\Workshop_day_4.csprojAssemblyReference.cache
+C:\Users\Jimmy_Zhu\source\repos\Workshop_day_4\Workshop_day_4\obj\Debug\netcoreapp2.1\Workshop_day_4.csproj.CoreCompileInputs.cache
+C:\Users\Jimmy_Zhu\source\repos\Workshop_day_4\Workshop_day_4\obj\Debug\netcoreapp2.1\Workshop_day_4.AssemblyInfoInputs.cache
+C:\Users\Jimmy_Zhu\source\repos\Workshop_day_4\Workshop_day_4\obj\Debug\netcoreapp2.1\Workshop_day_4.AssemblyInfo.cs
+C:\Users\Jimmy_Zhu\source\repos\Workshop_day_4\Workshop_day_4\obj\Debug\netcoreapp2.1\Workshop_day_4.dll
+C:\Users\Jimmy_Zhu\source\repos\Workshop_day_4\Workshop_day_4\obj\Debug\netcoreapp2.1\Workshop_day_4.pdb
