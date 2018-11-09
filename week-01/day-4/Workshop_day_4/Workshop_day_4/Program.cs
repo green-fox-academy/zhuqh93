@@ -419,13 +419,253 @@ namespace Workshop_day_4
 
         static void Exercise_19()
         {
-
             // Write a program that reads a number form the standard input,
             // If the number is zero or smaller it should print: Not enough
             // If the number is one it should print: One
             // If the number is two it should print: Two
             // If the number is more than two it should print: A lot
+            Console.WriteLine("Enter a number:");
+            int number = Int32.Parse(Console.ReadLine());
+            if (number <= 0)
+            {
+                Console.WriteLine("Not enough");
+            }else if (number == 1)
+            {
+                Console.WriteLine("One");
+            }else if (number == 2)
+            {
+                Console.WriteLine("Two");
+            }else if (number >= 2)
+            {
+                Console.WriteLine("A lot");
+            }
         }
+
+        static void Exercise_20()
+        {
+            // Write a program that asks for two numbers and prints the bigger one
+            Console.WriteLine("Enter the first number:");
+            int num1 = Int32.Parse(Console.ReadLine());
+            Console.WriteLine("Enter the second number:");
+            int num2 = Int32.Parse(Console.ReadLine());
+            if (num1 == num2)
+            {
+                Console.WriteLine("Even");
+            }
+            else if (num1 > num2)
+            {
+                Console.WriteLine("The first one is bigger.");
+            }
+            else if (num2 > num1)
+            {
+                Console.WriteLine("The second one is bigger.");
+            }
+        }
+
+        static void Exercise_21()
+        {
+            // Write a program that asks for two numbers
+            // The first number represents the number of girls that comes to a party, the
+            // second the boys
+            // It should print: The party is exellent!
+            // If the the number of girls and boys are equal and there are more people coming than 20
+            //
+            // It should print: Quite cool party!
+            // It there are more than 20 people coming but the girl - boy ratio is not 1-1
+            //
+            // It should print: Average party...
+            // If there are less people coming than 20
+            //
+            // It should print: Sausage party
+            // If no girls are coming, regardless the count of the people
+
+            Console.WriteLine("Number of girls: ");
+            int girls = Int32.Parse(Console.ReadLine());
+            Console.WriteLine("Number of boys: ");
+            int boys = Int32.Parse(Console.ReadLine());
+
+            if (girls + boys > 20)
+            {
+                if (girls == boys)
+                {
+                    if (girls == 0)
+                    {
+                        Console.WriteLine("Sausage party");
+                    }
+                    else
+                    {
+                        Console.WriteLine("The party is excellent!");
+                    }
+                }
+                else
+                {
+                    if (girls == 0)
+                    {
+                        Console.WriteLine("Sausage party");
+                    }
+                    else
+                    {
+                        Console.WriteLine("Quite cool party!");
+                    }
+                }
+            }
+            else if (girls + boys < 20)
+            {
+                if (girls == 0)
+                {
+                    Console.WriteLine("Sausage party");
+                }
+                else
+                {
+                    Console.WriteLine("Average party...");
+                }
+            }
+            else
+            {
+                Console.WriteLine("Not a crowd.");
+            }
+        }
+
+        static void Exercise_22()
+        {
+            double a = 24;
+            int out1 = 0;
+            // if a is even increment out by one
+            if (a % 2 == 0)
+            {
+                out1++;
+            }
+            Console.WriteLine(out1);
+
+            int b = 13;
+            string out2 = "";
+            // if b is between 10 and 20 set out2 to "Sweet!"
+            // if less than 10 set out2 to "Less!",
+            // if more than 20 set out2 to "More!"
+            if (b > 10 && b < 20)
+            {
+                out2 = "Sweet!";
+            }else if (b < 10)
+            {
+                out2 = "Less!";
+            }else if (b > 20)
+            {
+                out2 = "More!";
+            }
+            Console.WriteLine(out2);
+
+            int c = 123;
+            int credits = 100;
+            bool isBonus = false;
+            // if credits are at least 50,
+            // and isBonus is false decrement c by 2
+            // if credits are smaller than 50,
+            // and isBonus is false decrement c by 1
+            // if isBonus is true c should remain the same
+            if (credits >= 50 && isBonus == false)
+            {
+                c -= 2;
+            }else if (credits < 50 && isBonus == false)
+            {
+                c -= 1;
+            }
+            Console.WriteLine(c);
+
+            int d = 8;
+            int time = 120;
+            string out3 = "";
+            // if d is dividable by 4
+            // and time is not more than 200
+            // set out3 to "check"
+            // if time is more than 200
+            // set out3 to "Time out"
+            // otherwise set out3 to "Run Forest Run!"
+            if (d % 4 == 0 && time <= 200)
+            {
+                out3 = "check";
+            }else if (time > 200)
+            {
+                out3 = "Time out";
+            }
+            else
+            {
+                out3 = "Run Forest Run!";
+            }
+            Console.WriteLine(out3);
+        }
+
+        static void Exercise_23()
+        {
+            // Create a program that writes this line 100 times:
+            // "I won't cheat on the exam!"
+            for (int i = 0; i < 100; i++)
+            {
+                Console.WriteLine("I won't cheat on the exam!");
+            }
+        }
+
+        static void Exercise_24()
+        {
+            for(int i = 0; i <= 500; i += 2)
+            {
+                Console.WriteLine(i);
+            }
+        }
+
+        static void Exercise_25()
+        {
+            Console.WriteLine("What number do you prefer: ");
+            int num = Int32.Parse(Console.ReadLine());
+
+            for (int i = 1; i <= 10; i++)
+            {
+                Console.WriteLine("{0} * {1} = {2}", i, num, i * num);
+            }
+        }
+
+        static void Exercise_36()
+        {
+            Console.WriteLine("Welcome to the Calculator!");
+            Console.WriteLine("Please provide the first number:");
+            int num1 = Int32.Parse(Console.ReadLine());
+            Console.WriteLine("Please provide the second number:");
+            int num2 = Int32.Parse(Console.ReadLine());
+            Console.WriteLine("Please provide the operation (add, subtract, multiply or divide):");
+            string operation = Console.ReadLine();
+            double result = 0;
+            switch (operation)
+            {
+                case "+":
+                    result = num1 + num2;
+                    break;
+                case "-":
+                    result = num1 - num1;
+                    break;
+                case "*":
+                    result = num1 * num2;
+                    break;
+                case "/":
+                    result = num1 / num2;
+                    break;
+                default:
+                    Console.WriteLine("Not an option, please try one of the four operators above.");
+                    return;
+            }
+            Console.WriteLine($"The result is {result}.");
+        }
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 
 
@@ -496,70 +736,6 @@ namespace Workshop_day_4
                 }
             }
 
-            public void PartyIndicator()
-            {
-                // Write a program that asks for two numbers
-                // The first number represents the number of girls that comes to a party, the
-                // second the boys
-                // It should print: The party is exellent!
-                // If the the number of girls and boys are equal and there are more people coming than 20
-                //
-                // It should print: Quite cool party!
-                // It there are more than 20 people coming but the girl - boy ratio is not 1-1
-                //
-                // It should print: Average party...
-                // If there are less people coming than 20
-                //
-                // It should print: Sausage party
-                // If no girls are coming, regardless the count of the people
-
-                Console.WriteLine("Number of girls: ");
-                int girls = Int32.Parse(Console.ReadLine());
-                Console.WriteLine("Number of boys: ");
-                int boys = Int32.Parse(Console.ReadLine());
-
-                if (girls + boys > 20)
-                {
-                    if (girls == boys)
-                    {
-                        if (girls == 0)
-                        {
-                            Console.WriteLine("Sausage party");
-                        }
-                        else
-                        {
-                            Console.WriteLine("The party is excellent!");
-                        }
-                    }
-                    else
-                    {
-                        if (girls == 0)
-                        {
-                            Console.WriteLine("Sausage party");
-                        }
-                        else
-                        {
-                            Console.WriteLine("Quite cool party!");
-                        }
-                    }
-                }
-                else if (girls + boys < 20)
-                {
-                    if (girls == 0)
-                    {
-                        Console.WriteLine("Sausage party");
-                    }
-                    else
-                    {
-                        Console.WriteLine("Average party...");
-                    }
-                }
-                else
-                {
-                    Console.WriteLine("Not a crowd.");
-                }
-            }
-            
             public void SquareAndCube()
             {
                 int i1 = 10;
@@ -575,45 +751,9 @@ namespace Workshop_day_4
                     Console.WriteLine("i1 is either smaller than i2 squared or higher than i2 cubed.");
                 }
             }
+            
 
-            public void Calculator()
-            {
-                Console.WriteLine("Welcome to the Calculator!");
-                Console.WriteLine("Please provide the first number:");
-                int num1 = Int32.Parse(Console.ReadLine());
-                Console.WriteLine("Please provide the second number:");
-                int num2 = Int32.Parse(Console.ReadLine());
-                Console.WriteLine("Please provide the operation (add, subtract, multiply or divide):");
-                string operation = Console.ReadLine();
-                double result = 0;
-                switch (operation)
-                {
-                    case "+":
-                        result = num1 + num2;
-                        break;
-                    case "-":
-                        result = num1 - num1;
-                        break;
-                    case "*":
-                        result = num1 * num2;
-                        break;
-                    case "/":
-                        result = num1 / num2;
-                        break;
-                    default:
-                        Console.WriteLine("Not an option, please try one of the four operators above.");
-                        return;
-                }
-                Console.WriteLine($"The result is {result}.");
-            }
-
-            public void PrintEven()
-            {
-                for (int i = 0; i <= 500; i += 2)
-                {
-                    Console.WriteLine(i);
-                }
-            }
+            
 
             public void MultiplicationTable()
             {

@@ -687,11 +687,11 @@
   "project": {
     "version": "1.0.0",
     "restore": {
-      "projectUniqueName": "C:\\Users\\Jimmy_Zhu\\source\\repos\\Workshop_day_4\\Workshop_day_4\\Workshop_day_4.csproj",
+      "projectUniqueName": "C:\\Users\\Jimmy_Zhu\\Projects\\dotnet-academy\\greenfox\\zhuqh93\\week-01\\day-4\\Workshop_day_4\\Workshop_day_4\\Workshop_day_4.csproj",
       "projectName": "Workshop_day_4",
-      "projectPath": "C:\\Users\\Jimmy_Zhu\\source\\repos\\Workshop_day_4\\Workshop_day_4\\Workshop_day_4.csproj",
+      "projectPath": "C:\\Users\\Jimmy_Zhu\\Projects\\dotnet-academy\\greenfox\\zhuqh93\\week-01\\day-4\\Workshop_day_4\\Workshop_day_4\\Workshop_day_4.csproj",
       "packagesPath": "C:\\Users\\Jimmy_Zhu\\.nuget\\packages\\",
-      "outputPath": "C:\\Users\\Jimmy_Zhu\\source\\repos\\Workshop_day_4\\Workshop_day_4\\obj\\",
+      "outputPath": "C:\\Users\\Jimmy_Zhu\\Projects\\dotnet-academy\\greenfox\\zhuqh93\\week-01\\day-4\\Workshop_day_4\\Workshop_day_4\\obj\\",
       "projectStyle": "PackageReference",
       "fallbackFolders": [
         "C:\\Program Files\\dotnet\\sdk\\NuGetFallbackFolder"
