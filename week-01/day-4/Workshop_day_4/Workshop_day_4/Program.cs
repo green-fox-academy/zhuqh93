@@ -623,6 +623,165 @@ namespace Workshop_day_4
             }
         }
 
+        static void Exercise_26()
+        {
+            Console.WriteLine("Enter a number: ");
+            int num1 = Int32.Parse(Console.ReadLine());
+            Console.WriteLine("Enter another number: ");
+            int num2 = Int32.Parse(Console.ReadLine());
+
+            if (num2 <= num1)
+            {
+                Console.WriteLine("The second number should be bigger");
+                Console.WriteLine("Enter the second number: ");
+                num2 = Int32.Parse(Console.ReadLine());
+            }
+            else
+            {
+                for (int i = num1; i < num2; i++)
+                {
+                    Console.WriteLine(i);
+                }
+            }
+        }
+
+        static void Exercise_27()
+        {
+            for (int i = 1; i <= 100; i++)
+            {
+                if (i % 3 == 0 && i % 5 != 0)
+                {
+                    Console.WriteLine("Fizz");
+                }
+                else if (i % 5 == 0 && i % 3 != 0)
+                {
+                    Console.WriteLine("Buzz");
+                }
+                else if (i % 3 == 0 && i % 5 == 0)
+                {
+                    Console.WriteLine("FizzBuzz");
+                }
+                else
+                {
+                    Console.WriteLine(i);
+                }
+            }
+        }
+
+        static void Exercise_28()
+        {
+            Console.WriteLine("Enter a number: ");
+            int num = Int32.Parse(Console.ReadLine());
+
+            for (int x = 1; x <= num; x++)
+            {
+                for (int y = 0; y <= x - 1; y++)
+                {
+                    Console.Write("*");
+                }
+                Console.WriteLine();
+            }
+        }
+
+        static void Exercise_29()
+        {
+            // Write a program that reads a number from the standard input, then draws a
+            // pyramid like this:
+            //
+            //
+            //    *
+            //   ***
+            //  *****
+            // *******
+            //
+            // The pyramid should have as many lines as the number was
+            
+        }
+
+        static void Exercise_30()
+        {
+            // Write a program that reads a number from the standard input, then draws a
+            // diamond like this:
+            //
+            //
+            //    *
+            //   ***
+            //  *****
+            // *******
+            //  *****
+            //   ***
+            //    *
+            //
+            // The diamond should have as many lines as the number was
+        }
+
+        static void Exercise_31()
+        {
+            // Write a program that reads a number from the standard input, then draws a
+            // square like this:
+            //
+            //
+            // %%%%%%
+            // %    %
+            // %    %
+            // %    %
+            // %    %
+            // %%%%%%
+            //
+            // The square should have as many lines as the number was
+        }
+
+        static void Exercise_32()
+        {
+            // Write a program that reads a number from the standard input, then draws a
+            // square like this:
+            //
+            //
+            // %%%%%
+            // %%  %
+            // % % %
+            // %  %%
+            // %%%%%
+            //
+            // The square should have as many lines as the number was
+        }
+
+        static void Exercise_33()
+        {
+            // Write a program that stores a number, and the user has to figure it out.
+            // The user can input guesses, after each guess the program would tell one
+            // of the following:
+            //
+            // The stored number is higher
+            // The stried number is lower
+            // You found the number: 8
+        }
+
+        static void Exercise_34()
+        {
+            // Write a program that asks for a number.
+            // It would ask this many times to enter an integer,
+            // if all the integers are entered, it should print the sum and average of these
+            // integers like:
+            //
+            // Sum: 22, Average: 4.4
+        }
+
+        static void Exercise_35()
+        {
+            // Crate a program that draws a chess table like this
+            //
+            // % % % %
+            //  % % % %
+            // % % % %
+            //  % % % %
+            // % % % %
+            //  % % % %
+            // % % % %
+            //  % % % %
+            //
+        }
+
         static void Exercise_36()
         {
             Console.WriteLine("Welcome to the Calculator!");
@@ -752,77 +911,6 @@ namespace Workshop_day_4
                 }
             }
             
-
-            
-
-            public void MultiplicationTable()
-            {
-                Console.WriteLine("What number do you prefer: ");
-                int num = Int32.Parse(Console.ReadLine());
-
-                for (int i = 1; i <= 10; i++)
-                {
-                    Console.WriteLine("{0} * {1} = {2}", i, num, i * num);
-                }
-            }
-
-            public void CountFromTo()
-            {
-                Console.WriteLine("Enter a number: ");
-                int num1 = Int32.Parse(Console.ReadLine());
-                Console.WriteLine("Enter another number: ");
-                int num2 = Int32.Parse(Console.ReadLine());
-
-                if (num2 <= num1)
-                {
-                    Console.WriteLine("The second number should be bigger");
-                    Console.WriteLine("Enter the second number: ");
-                    num2 = Int32.Parse(Console.ReadLine());
-                }
-                else
-                {
-                    for (int i = num1; i < num2; i++)
-                    {
-                        Console.WriteLine(i);
-                    }
-                }
-            }
-
-            public void FizzBuzz()
-            {
-                for (int i = 1; i <= 100; i++)
-                {
-                    if (i % 3 == 0 && i % 5 != 0)
-                    {
-                        Console.WriteLine("Fizz");
-                    }else if (i % 5 == 0 && i % 3 != 0)
-                    {
-                        Console.WriteLine("Buzz");
-                    }else if (i % 3 == 0 && i % 5 == 0)
-                    {
-                        Console.WriteLine("FizzBuzz");
-                    }
-                    else
-                    {
-                        Console.WriteLine(i);
-                    }
-                }
-            }
-
-            public void DrawTriangle()
-            {
-                Console.WriteLine("Enter a number: ");
-                int num = Int32.Parse(Console.ReadLine());
-
-                for (int x = 1; x <= num; x++)
-                {
-                    for (int y = 0; y <= x - 1; y++)
-                    { 
-                        Console.Write("*");
-                    }
-                    Console.WriteLine();
-                }
-            }
         }
     }
 }
