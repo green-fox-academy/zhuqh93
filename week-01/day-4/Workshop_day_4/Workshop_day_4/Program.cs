@@ -7,77 +7,89 @@ namespace Workshop_day_4
     {
         static void Main(string[] args)
         {
-//            Exercise_01(); //HelloMe
+            //            Exercise_01(); //HelloMe
 
-//            Exercise_02(); //HumptyDumpty
+            //            Exercise_02(); //HumptyDumpty
 
-//            Exercise_03(); //HelloOthers
+            //            Exercise_03(); //HelloOthers
 
-//            Exercise_04(); //IntroduceYourself
+            //            Exercise_04(); //IntroduceYourself
 
-//            Exercise_05(); //TwoNumbers
+            //            Exercise_05(); //TwoNumbers
 
-//            Exercise_06(); //CodingHours
+            //            Exercise_06(); //CodingHours
 
-//            Exercise_07(); //FavoriteNumber
+            //            Exercise_07(); //FavoriteNumber
 
-//            Exercise_08();
-//
-//            Exercise_09();
-//
-//            Exercise_10();
-//
-//            Exercise_11();
-//
-//            Exercise_12();
-//
-//            Exercise_13();
-//
-//            Exercise_14();
-//
-//            Exercise_15();
-//
-//            Exercise_16();
-//
-//            Exercise_17();
-//
-//            Exercise_18();
-//
-//            Exercise_19();
-//
-//            Exercise_20();
-//
-//            Exercise_21();
-//
-//            Exercise_22();
-//
-//            Exercise_23();
-//
-//            Exercise_24();
-//
-//            Exercise_25();
-//
-//            Exercise_26();
-//
-//            Exercise_27();
-//
-//            Exercise_28();
-//
-//            Exercise_29();
-//
-//            Exercise_30();
-//
-//            Exercise_31();
-//
-//            Exercise_32();
-//
-//            Exercise_33();
-//
-//            Exercise_34();
-//
-//            Exercise_35();
-//
-//            Exercise_36();
+            //            Exercise_08();
+            //
+            //            Exercise_09();
+            //
+            //            Exercise_10();
+            //
+            //            Exercise_11();
+            //
+            //            Exercise_12();
+            //
+            //            Exercise_13();
+            //
+            //            Exercise_14();
+            //
+            //            Exercise_15();
+            //
+            //            Exercise_16();
+            //
+            //            Exercise_17();
+            //
+            //            Exercise_18();
+            //
+            //            Exercise_19();
+            //
+            //            Exercise_20();
+            //
+            //            Exercise_21();
+            //
+            //            Exercise_22();
+            //
+            //            Exercise_23();
+            //
+            //            Exercise_24();
+            //
+            //            Exercise_25();
+            //
+            //            Exercise_26();
+            //
+            //            Exercise_27();
+            //
+            //            Exercise_28();
+            //
+            //            Exercise_29();
+            //
+            //            Exercise_30();
+            //
+            //            Exercise_31();
+            //
+            //            Exercise_32();
+            //
+            //            Exercise_33();
+            //
+            //            Exercise_34();
+            //
+            //            Exercise_35();
+            //
+            //            Exercise_36();
+
+
+            //  Plus One
+            //  Create a function that takes two strings as a parameter
+            //  Returns the starting index where the second one is starting in the first one
+            //  Returns `-1` if the second string is not in the first one
+
+            //  Example:
+            Console.WriteLine(Substr("this is what I'm searching in", "searching"));
+            //  should print: `17`
+            Console.WriteLine(Substr("this is what I'm searching in", "not"));
+            //  should print: `-1`
         }
 
         static void Exercise_01()
@@ -811,6 +823,11 @@ namespace Workshop_day_4
                     return;
             }
             Console.WriteLine($"The result is {result}.");
+        }
+
+        static int Substr(string input, string q)
+        {
+            return -1;
         }
 
 
