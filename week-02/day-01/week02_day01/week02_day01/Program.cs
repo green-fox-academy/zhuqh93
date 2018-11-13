@@ -44,8 +44,8 @@ namespace week02_day01
             //            var list = new List<int> { 2, 4, 6, 8, 10, 12, 14, 16 };
             //            Console.WriteLine(CheckNums(list));
 
-            var list = new List<string> { "What", "I", "do", "create,", "I", "cannot", "not", "understand." };
-            Console.WriteLine(QuoteSwap(list));
+//            var list = new List<string> { "What", "I", "do", "create,", "I", "cannot", "not", "understand." };
+//            Console.WriteLine(QuoteSwap(list));
 
             Console.ReadLine();
         }
