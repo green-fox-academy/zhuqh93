@@ -147,8 +147,6 @@ namespace week02_day03
 
         private static bool CopyFile(String originalFile, String copyOfOriginal)
         {
-            Boolean result = false;
-
             try
             {
                 String tempCopy = "";
@@ -178,7 +176,6 @@ namespace week02_day03
             }
 
             return true;
-            Console.ReadLine();
         }
     }
 }
