@@ -19,7 +19,9 @@ namespace week02_day03
 
 //            WriteMultipleLines(@"C:\Users\Jimmy_Zhu\Projects\dotnet-academy\greenfox\zhuqh93\week-02\day-03\week02_day03\week02_day03\my-file.txt", "Apple", 5);
 
-            CopyFile("my-file.txt", "copy-my-file.txt");
+            //Console.WriteLine(CopyFile("my-file.txt", "copy-my-file.txt"));
+
+
         }
 
         private static void DivideByZero()
@@ -159,37 +161,23 @@ namespace week02_day03
                     contentList.Add(tempCopy);
                 }
 
+                originalReader.Close();
+
                 StreamWriter writer = new StreamWriter(copyOfOriginal);
 
                 foreach (var content in contentList)
                 {
-                    writer.WriteLine();
+                    writer.WriteLine(content);
                 }
 
                 writer.Close();
-
-                String tempOriginalCopy = "";
-                String tempCopyOfCopy = "";
-                StreamReader copyReader = new StreamReader(copyOfOriginal);
-                
-                while (tempOriginalCopy != null && tempCopyOfCopy != null)
-                {
-                    tempOriginalCopy = originalReader.ReadLine();
-                    tempCopyOfCopy = copyReader.ReadLine();
-
-                    if (tempOriginalCopy.Equals(tempCopyOfCopy))
-                    {
-                        result = true;
-                    }
-                }
             }
             catch (Exception e)
             {
                 Console.WriteLine(e);
-                throw;
             }
 
-            return result;
+            return true;
             Console.ReadLine();
         }
     }
