@@ -7,8 +7,8 @@ namespace The_Garden_Application
 {
     class Garden
     {
-        internal List<Flower> FlowerList;
-        internal List<Tree> TreeList;
+        internal List<Flower> FlowerList = new List<Flower>();
+        internal List<Tree> TreeList = new List<Tree>();
         
         public void WaterGarden40()
         {
@@ -75,9 +75,9 @@ namespace The_Garden_Application
             }
         }
 
-        public int NumberOfPlantsNeedWater()
+        public double NumberOfPlantsNeedWater()
         {
-            int count = 0;
+            double count = 0;
 
             foreach (var flower in FlowerList)
             {

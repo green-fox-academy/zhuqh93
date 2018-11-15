@@ -27,12 +27,16 @@ namespace The_Garden_Application
 
             newGarden.GardenStatus();
 
+            Console.WriteLine();
+
             if (newGarden.NumberOfPlantsNeedWater() > 0)
             {
                 newGarden.WaterGarden40();
                 Console.WriteLine("Watering with 40");
                 newGarden.GardenStatus();
             }
+
+            Console.WriteLine();
 
             if (newGarden.NumberOfPlantsNeedWater() > 0)
             {

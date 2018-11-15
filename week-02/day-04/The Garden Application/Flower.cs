@@ -20,7 +20,7 @@ namespace The_Garden_Application
         {
             bool result = false;
 
-            if (flowerWaterAmount > 0 && flowerWaterAmount < 5)
+            if (flowerWaterAmount >= 0 && flowerWaterAmount < 5)
             {
                 result = true;
             }
