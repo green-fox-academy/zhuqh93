@@ -18,6 +18,8 @@ namespace day03_workshop
             Participant newParticipant = new Participant();
             newParticipant.Name = "Poor guy";
             newParticipant.Price = (new Random()).Next(1000, 10001);
+
+
             Console.WriteLine("{0} price: {1} {2}", newParticipant.Name, Prize.Amount, Prize.Currency);
 
             Console.Read();
