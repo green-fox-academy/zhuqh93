@@ -10,11 +10,11 @@ namespace workshop
         static void Main(string[] args)
         {
             char u = 'u';
-            string aString = "uieudcc";
+            string aString = "uieuudcc";
             string[] a = aString.Split(u);
             foreach (var VARIABLE in a)
             {
-                Console.WriteLine(VARIABLE);
+                Console.WriteLine("[{0}]", VARIABLE);
             }
 
             Console.WriteLine(string.Join(u+"U"+u, a));

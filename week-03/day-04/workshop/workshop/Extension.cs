@@ -8,20 +8,40 @@ namespace WorkshopTest
     {
         public int Add(int a, int b)
         {
-            return 5;
+            return a + b;
         }
 
         public int MaxOfThree(int a, int b, int c)
         {
-            if (a > b)
-                return a;
-            else
-                return c;
+            int max = -1;
+
+            if (a > b && a != b)
+            {
+                if (a > c && a != c)
+                    max = a;
+                else
+                    max = c;
+            }
+            else if (a < b && a != b)
+            {
+                if (b > c && b != c)
+                    max = b;
+                else
+                    max = c;
+            }
+
+            return max;
         }
 
         public int Median(List<int> pool)
         {
-            return pool[(pool.Count - 1) / 2];
+            pool.Sort();
+
+            if (pool.Count % 2 == 0)
+            {
+                return (pool[(pool.Count - 1) / 2] + pool[pool.Count / 2]) / 2;
+            }else
+                return pool[pool.Count / 2];
         }
 
         public bool IsVowel(char c)
@@ -33,13 +53,25 @@ namespace WorkshopTest
         {
             string teve = hungarian;
             int length = teve.Length;
+            //for (int i = 0; i < length; i++)
+            //{
+            //    char c = teve[i];
+            //    if (IsVowel(c))
+            //    {
+            //        teve = string.Join(c + "v" + c, teve.Split(c));
+            //        i += 2;
+            //        length += 2;
+            //    }
+            //}
+
             for (int i = 0; i < length; i++)
             {
-                char c = teve[i];
-                if (IsVowel(c))
+                char character = teve[i];
+
+                if (IsVowel(character))
                 {
-                    teve = string.Join(c + "v" + c, teve.Split(c));
-                    i += 2;
+                    teve = string.Join(character + "v" + character, teve.Split(character));
+                    i += 1;
                     length += 2;
                 }
             }

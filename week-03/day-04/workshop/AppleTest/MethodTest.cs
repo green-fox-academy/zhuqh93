@@ -48,7 +48,6 @@ namespace WorkshopTest
             string testString1 = "apple";
             string testString2 = " pa PeL ";
 
-            bool expectedOutput = true;
             var anagramTest = new Anagram();
 
             //act
