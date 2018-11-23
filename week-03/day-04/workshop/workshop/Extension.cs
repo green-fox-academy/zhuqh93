@@ -51,8 +51,28 @@ namespace WorkshopTest
 
         public string Translate(string hungarian)
         {
-            string teve = hungarian;
-            int length = teve.Length;
+            string teve = "";
+            List<string> teveList = new List<string>();
+            
+            for (int i = 0; i < hungarian.Length; i++)
+            {
+                char c = hungarian[i];
+
+                if (IsVowel(c))
+                {
+                    teveList.Add(c + "v" + c);
+                }
+                else
+                {
+                    teveList.Add(c.ToString());
+                }
+            }
+
+            foreach (var VARIABLE in teveList)
+            {
+                teve += VARIABLE;
+            }
+
             //for (int i = 0; i < length; i++)
             //{
             //    char c = teve[i];
@@ -63,18 +83,6 @@ namespace WorkshopTest
             //        length += 2;
             //    }
             //}
-
-            for (int i = 0; i < length; i++)
-            {
-                char character = teve[i];
-
-                if (IsVowel(character))
-                {
-                    teve = string.Join(character + "v" + character, teve.Split(character));
-                    i += 1;
-                    length += 2;
-                }
-            }
 
             return teve;
         }
