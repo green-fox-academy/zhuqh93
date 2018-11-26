@@ -1,0 +1,31 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 12.00
+# Visual Studio 15
+VisualStudioVersion = 15.0.28307.102
+MinimumVisualStudioVersion = 10.0.40219.1
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "week-04-day-01-workshop", "week-04-day-01-workshop\week-04-day-01-workshop.csproj", "{731665ED-8A87-4CD2-B17E-3686BB04BAB2}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "SayHelloToTheWorld", "..\SayHelloToTheWorld\SayHelloToTheWorld.csproj", "{A5723ED1-0621-41F4-A692-B9AFF54F5B3A}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Any CPU = Debug|Any CPU
+		Release|Any CPU = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{731665ED-8A87-4CD2-B17E-3686BB04BAB2}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{731665ED-8A87-4CD2-B17E-3686BB04BAB2}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{731665ED-8A87-4CD2-B17E-3686BB04BAB2}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{731665ED-8A87-4CD2-B17E-3686BB04BAB2}.Release|Any CPU.Build.0 = Release|Any CPU
+		{A5723ED1-0621-41F4-A692-B9AFF54F5B3A}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{A5723ED1-0621-41F4-A692-B9AFF54F5B3A}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{A5723ED1-0621-41F4-A692-B9AFF54F5B3A}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{A5723ED1-0621-41F4-A692-B9AFF54F5B3A}.Release|Any CPU.Build.0 = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+	GlobalSection(ExtensibilityGlobals) = postSolution
+		SolutionGuid = {3401023C-ABC6-47AD-AB9F-F3A36DE3DF45}
+	EndGlobalSection
+EndGlobal
