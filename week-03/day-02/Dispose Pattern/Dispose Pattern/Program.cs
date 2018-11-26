@@ -1,5 +1,6 @@
 ﻿using System;
 using System.IO;
+using System.Net.Http;
 using System.Text;
 
 namespace Dispose_Pattern
@@ -8,7 +9,7 @@ namespace Dispose_Pattern
     {
         static void Main(string[] args)
         { 
-            var logger = new FileLogger("log.txt");
+            var logger = new NetworkAndFileLogger("log.txt");
 
             logger.Log("First log message");
             logger.Log("Second log message");
@@ -50,6 +51,21 @@ namespace Dispose_Pattern
             {
                 writer.WriteLine("{0} - {1}", DateTime.Now.ToString("yyyy-MM-ddTHH:mm:ss.fff"), message);
             }
+        }
+    }
+
+    public class NetworkAndFileLogger : FileLogger
+    {
+        private readonly HttpClient httpClient;
+
+        public NetworkAndFileLogger(string filePath) : base(filePath)
+        {
+            httpClient = new HttpClient();
+        }
+
+        public override void Log(string message)
+        {
+            httpClient.PostAsync("http://requestbin.fullcontact.com/19k1eyj1", new StringContent(message)).Wait();
         }
     }
 
