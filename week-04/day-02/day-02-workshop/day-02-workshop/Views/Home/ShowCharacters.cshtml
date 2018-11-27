@@ -1,0 +1,64 @@
+﻿@using day_02_workshop.Controllers
+@model day_02_workshop.Controllers.HomeController
+@{
+    ViewData["Title"] = "ShowCharacters";
+
+}
+
+<style>
+    table, td, th {
+        border: 1px solid black;
+    }
+
+    td, th {
+        text-align: center
+    }
+</style>
+
+<h2>ShowCharacters</h2>
+
+<table>
+    <tr>
+        <th></th>
+        <th>Name</th>
+        <th>Balance</th>
+        <th>AnimalType</th>
+        <th>King</th>
+        <th>Good/Bad</th>
+    </tr>
+
+    @for (int i = 0; i < HomeController.charactersList.Count; i++)
+    {
+        string color;
+        bool isKing;
+
+        if (HomeController.charactersList[i].IsKing)
+        {
+            color = "gold";
+            isKing = true;
+        }
+        else
+        {
+            color = "black";
+            isKing = false;
+        }
+
+        <tr style="color: @color">
+            <td>@i</td>
+            <td>@HomeController.charactersList[i].Name</td>
+            <td>@HomeController.charactersList[i].Balance</td>
+            <td>@HomeController.charactersList[i].AnimalType</td>
+            <td>@isKing</td>
+
+            @switch (HomeController.charactersList[i].GoodOrBad)
+            {
+                case true:
+                    <td>Good One</td>
+                    break;
+                case false:
+                    <td>Bay Guy</td>
+                    break;
+            }
+        </tr>
+    }
+</table>
