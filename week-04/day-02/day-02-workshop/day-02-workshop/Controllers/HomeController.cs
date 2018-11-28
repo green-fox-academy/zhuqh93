@@ -33,20 +33,33 @@ namespace day_02_workshop.Controllers
         [HttpGet("")]
         public IActionResult ShowCharacters()
         {
+            return View(charactersList);
+        }
+
+        [HttpGet("/update")]
+        public IActionResult RaiseBalance()
+        {
             return View();
         }
 
-        [HttpPost("")]
-        public IActionResult RaiseBalance(BankAccount bankAccount)
+        [HttpPost("update")]
+        public IActionResult RaiseBalance(string name)
         {
-            if (bankAccount.IsKing)
+            foreach (var VARIABLE in charactersList)
             {
-                bankAccount.Balance += 100;
+                if (VARIABLE.Name == name)
+                {
+                    if (VARIABLE.IsKing)
+                    {
+                        VARIABLE.Balance += 100;
+                    }
+                    else
+                    {
+                        VARIABLE.Balance += 10;
+                    }
+                }
             }
-            else
-            {
-                bankAccount.Balance += 10;
-            }
+            
 
             return RedirectToAction(nameof(ShowCharacters));
         }

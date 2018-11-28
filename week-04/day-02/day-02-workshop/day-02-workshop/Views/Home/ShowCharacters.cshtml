@@ -1,5 +1,5 @@
-﻿@using day_02_workshop.Controllers
-@model day_02_workshop.Controllers.HomeController
+﻿
+@model List<day_02_workshop.Models.BankAccount>
 @{
     ViewData["Title"] = "ShowCharacters";
 
@@ -27,12 +27,12 @@
         <th>Good/Bad</th>
     </tr>
 
-    @for (int i = 0; i < HomeController.charactersList.Count; i++)
+    @for (int i = 0; i < Model.Count(); i++)
     {
         string color;
         bool isKing;
 
-        if (HomeController.charactersList[i].IsKing)
+        if (Model[i].IsKing)
         {
             color = "gold";
             isKing = true;
@@ -45,12 +45,12 @@
 
         <tr style="color: @color">
             <td>@i</td>
-            <td>@HomeController.charactersList[i].Name</td>
-            <td>@HomeController.charactersList[i].Balance</td>
-            <td>@HomeController.charactersList[i].AnimalType</td>
+            <td>@Model[i].Name</td>
+            <td>@Model[i].Balance</td>
+            <td>@Model[i].AnimalType</td>
             <td>@isKing</td>
 
-            @switch (HomeController.charactersList[i].GoodOrBad)
+            @switch (Model[i].GoodOrBad)
             {
                 case true:
                     <td>Good One</td>
