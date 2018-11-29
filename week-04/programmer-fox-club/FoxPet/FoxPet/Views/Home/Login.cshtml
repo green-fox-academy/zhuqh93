@@ -1,0 +1,14 @@
+﻿@addTagHelper *, Microsoft.AspNetCore.Mvc.TagHelpers
+@{
+    ViewData["Title"] = "Login";
+}
+
+<h2>Welcome to Programmer Fox Club!</h2>
+
+<p>Please provide a name, so you can associate it to your pet!</p>
+
+<form asp-controller="Home" asp-action="Login" method="post">
+    Name <input type="text" name="Name"/>
+    <button type="submit">Go</button>
+</form>
+

@@ -1,0 +1,34 @@
+﻿@using FoxPet.Reporsitories
+@model Fox
+@{
+    ViewData["Title"] = "Information";
+}
+
+<ul>
+    <li><a href="/?name=@Model.Name">Information</a></li>
+    <li><a href="nutritionStore?name=@Model.Name">Nutrition Store</a></li>
+</ul>
+
+<img src="~/greenfox.png" />
+
+<p>This is @Model.Name. Currently living on @Model.Food and @Model.Drink. He knows @Model.Tricks.Count tricks.</p>
+
+<h1>Known Tricks</h1>
+
+@if (@Model.Name.Equals("Mr.Green") && @Model.Food.Equals("salad") && @Model.Drink.Equals("water") && @Model.Tricks.Count == 0)
+{
+    <p>You know no tricks, yet. Go and learn some.</p>
+}
+else if (@Model.Tricks.Count == 0)
+{
+    <p>You know no tricks, yet. Go and learn some.</p>
+}
+else
+{
+    <ul>
+        <li>trick 1</li>
+        <li>trick 2</li>
+    </ul>
+}
+
+
