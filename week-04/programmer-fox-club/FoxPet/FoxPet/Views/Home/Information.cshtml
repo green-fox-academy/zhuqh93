@@ -1,4 +1,4 @@
-﻿@using FoxPet.Reporsitories
+﻿@using FoxPet.Repositories
 @model Fox
 @{
     ViewData["Title"] = "Information";
@@ -7,6 +7,9 @@
 <ul>
     <li><a href="/?name=@Model.Name">Information</a></li>
     <li><a href="nutritionStore?name=@Model.Name">Nutrition Store</a></li>
+    <li><a href="trickCenter?name=@Model.Name">Trick Center</a></li>
+    <li><a href="actionHistory?name=@Model.Name">Action History</a></li>
+
 </ul>
 
 <img src="~/greenfox.png" />
@@ -25,10 +28,12 @@ else if (@Model.Tricks.Count == 0)
 }
 else
 {
-    <ul>
-        <li>trick 1</li>
-        <li>trick 2</li>
-    </ul>
+    foreach (var trick in @Model.Tricks)
+    {
+        <ul>
+            <li>@trick</li>
+        </ul>
+    }
 }
 
 

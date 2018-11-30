@@ -1,0 +1,18 @@
+﻿@addTagHelper *, Microsoft.AspNetCore.Mvc.TagHelpers
+@using FoxPet.Repositories
+@model Fox
+@{
+    ViewBag.Title = "TrickCenter";
+}
+
+<ul>
+    <li><a href="/?name=@Model.Name">Information</a></li>
+    <li><a href="nutritionStore?name=@Model.Name">Nutrition Store</a></li>
+    <li><a href="trickCenter?name=@Model.Name">Trick Center</a></li>
+    <li><a href="actionHistory?name=@Model.Name">Action History</a></li>
+</ul>
+
+<form asp-controller="Fox" asp-action="TrickCenter" method="post">
+    Tricks <input type="text" name="Tricks" />
+    <button type="submit">Learn</button>
+</form>

@@ -2,15 +2,15 @@
 using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
-using FoxPet.Reporsitories;
+using FoxPet.Repositories;
 using Microsoft.AspNetCore.Mvc;
 
 namespace FoxPet.Controllers
 {
     public class HomeController : Controller
     {
-        private static int index;
-        private static List<Fox> foxList = new List<Fox>();
+        public static int index;
+        public static List<Fox> foxList = new List<Fox>();
 
         [HttpGet("/")]
         public IActionResult Information()
@@ -46,21 +46,6 @@ namespace FoxPet.Controllers
                     index = Fox.Id;
                 }
             }
-
-            return RedirectToAction(nameof(Information), new { name = foxList[index].Name });
-        }
-
-        [HttpGet("/nutritionStore")]
-        public IActionResult NutritionStore()
-        {
-            return View(foxList[index]);
-        }
-
-        [HttpPost("/nutritionStore")]
-        public IActionResult NutritionStore(string food, string drink)
-        {
-            foxList[index].Food = food;
-            foxList[index].Drink = drink;
 
             return RedirectToAction(nameof(Information), new { name = foxList[index].Name });
         }

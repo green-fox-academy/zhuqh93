@@ -1,5 +1,5 @@
 ﻿@addTagHelper *, Microsoft.AspNetCore.Mvc.TagHelpers
-@using FoxPet.Reporsitories
+@using FoxPet.Repositories
 @model Fox
 @{
     ViewBag.Title = "NutritionStore";
@@ -12,8 +12,21 @@
     <li><a href="actionHistory?name=@Model.Name">Action History</a></li>
 </ul>
 
-<form asp-controller="Home" asp-action="NutritionStore" method="post">
-    Food <input type="text" name="Food" />
-    Drink <input type="text" name="Drink" />
+<form asp-controller="Fox" asp-action="NutritionStore" method="post">
+    Food 
+    <select>
+        @foreach (var food in @Model.Food)
+        {
+            <option value="Food">@food</option>
+        }
+    </select>
+
+    Drink 
+    <select>
+        @foreach (var drink in @Model.Drink)
+        {
+            <option value="Drink">@drink</option>
+        }
+    </select>
     <button type="submit">Change</button>
 </form>

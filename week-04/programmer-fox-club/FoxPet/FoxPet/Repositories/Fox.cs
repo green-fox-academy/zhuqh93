@@ -3,7 +3,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
 
-namespace FoxPet.Reporsitories
+namespace FoxPet.Repositories
 {
     public class Fox
     {
@@ -17,8 +17,8 @@ namespace FoxPet.Reporsitories
         {
             this.Name = name;
             this.Tricks = new List<string>();
-            this.Food = "normal food";
-            this.Drink = "normal drink";
+            this.Food = "";
+            this.Drink = "";
             Id++;
         }
     }
