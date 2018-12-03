@@ -45,21 +45,20 @@ namespace day_02_workshop.Controllers
         [HttpPost("update")]
         public IActionResult RaiseBalance(string name)
         {
-            foreach (var VARIABLE in charactersList)
+            foreach (var character in charactersList)
             {
-                if (VARIABLE.Name == name)
+                if (character.Name == name)
                 {
-                    if (VARIABLE.IsKing)
+                    if (character.IsKing)
                     {
-                        VARIABLE.Balance += 100;
+                        character.Balance += 100;
                     }
                     else
                     {
-                        VARIABLE.Balance += 10;
+                        character.Balance += 10;
                     }
                 }
             }
-            
 
             return RedirectToAction(nameof(ShowCharacters));
         }
