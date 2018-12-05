@@ -1,0 +1,33 @@
+﻿@model System.Collections.Generic.List<EntityFramworkExercise.Models.Todo>
+
+<html>
+<head>
+    <title>Index</title>
+    <style>
+        td { border: 1.5px solid black}
+    </style>
+</head>
+    
+<body>
+<div>
+    <h1>TODOS FOR TODAY:</h1>
+</div>
+<div>
+    <a href=""></a>
+</div>
+<div>
+    <table>
+        <tr><th>ID</th><th>ACTION</th><th>DONE</th><th>URGENT</th></tr>
+        @foreach (var todo in @Model)
+        {
+            <tr>
+                <td>@todo.Id</td>
+                <td>@todo.Title</td>
+                <td>@todo.IsDone</td>
+                <td>@todo.IsUrgent</td>
+            </tr>
+        }
+    </table>
+</div>
+</body>
+</html>
