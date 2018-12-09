@@ -15,6 +15,9 @@
             margin: auto;
             width: 50%;
         }
+        td {
+            padding: 8px;
+        }
     </style>
 </head>
 <body align="center">
@@ -24,26 +27,27 @@
     <div align="left">
         @foreach (var post in @Model.Posts.OrderByDescending(x => x.Vote).Skip(10 * (@Model.PageIndex - 1)).Take(10))
         {
-            @post.Vote
-            <form asp-controller="Home" asp-action="UpVote" method="post">
-                <button name="id" type="submit" value="@post.PostId"> + </button>
-            </form>
-            @* <a asp-controller="Home" asp-action="UpVote" asp-route-id="@post.PostId" asp-route-pageIndex="@Model.PageIndex"> + </a> *@
-            <form asp-controller="Home" asp-action="DownVote" method="post">
-                <button name="id" type="submit" value="@post.PostId"> - </button>
-            </form>
-            <a href="">@post.Title</a>
-            @post.CreateDateTime
-            <br />
+            <table>
+                <tr>
+                    <td style="width: 50px; text-align: center">@post.Vote</td>
+                    <td><a asp-controller="Home" asp-action="UpVote" asp-route-postId="@post.PostId" asp-route-pageIndex="@Model.PageIndex"> + </a></td>
+                    <td><a asp-controller="Home" asp-action="DownVote" asp-route-postId="@post.PostId" asp-route-pageIndex="@Model.PageIndex"> - </a></td>
+                    <td style="width: 400px"><a href="">@post.Title</a></td>
+                    <td>@post.CreateDateTime</td>
+                </tr>
+            </table>
         }
     </div>
     <br />
-    <div>
-        @for (int i = 1; i <= totalPages; i++)
-        {
-            <a asp-controller="Home" asp-action="Index" asp-route-pageIndex="@i"> @i </a>
-        }
+    <div align="center">
+        <table>
+            <tr>
+                @for (int i = 1; i <= totalPages; i++)
+                {
+                    <td><a asp-controller="Home" asp-action="Index" asp-route-pageIndex="@i"> @i </a></td>
+                }
+            </tr>
+        </table>
     </div>
-    <br /><br />
 </body>
 </html>

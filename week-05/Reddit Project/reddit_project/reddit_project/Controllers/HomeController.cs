@@ -1,4 +1,5 @@
-﻿using System.Diagnostics;
+﻿using System.Collections.Generic;
+using System.Diagnostics;
 using System.Linq;
 using Microsoft.AspNetCore.Mvc;
 using reddit_project.Models;
@@ -27,20 +28,20 @@ namespace reddit_project.Controllers
             return View(model);
         }
 
-        [HttpPost]
-        public IActionResult UpVote(int id)
+        [HttpGet]
+        public IActionResult UpVote(int postId, int pageIndex)
         {
-            postServices.UpVote(id);
+            postServices.UpVote(postId);
 
-            return RedirectToAction("Index");
+            return RedirectToAction("Index", new { pageIndex = pageIndex });
         }
 
-        [HttpPost]
-        public IActionResult DownVote(int id)
+        [HttpGet]
+        public IActionResult DownVote(int postId, int pageIndex)
         {
-            postServices.DownVote(id);
+            postServices.DownVote(postId);
 
-            return RedirectToAction("Index");
+            return RedirectToAction("Index", new { pageIndex = pageIndex });
         }
 
         [HttpGet("submit")]
