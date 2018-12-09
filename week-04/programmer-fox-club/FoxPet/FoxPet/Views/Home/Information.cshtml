@@ -1,39 +1,36 @@
-﻿@using FoxPet.Repositories
+﻿@using FoxPet.Models
 @model Fox
 @{
     ViewData["Title"] = "Information";
 }
+<!doctype html>
+<html>
+<body>
+    <ul>
+        <li><a href="">Information</a></li>
+        <li><a href="">Nutrition Store</a></li>
+        <li><a href="">Trick Center</a></li>
+        <li><a href="">Action History</a></li>
+    </ul>
 
-<ul>
-    <li><a href="/?name=@Model.Name">Information</a></li>
-    <li><a href="nutritionStore?name=@Model.Name">Nutrition Store</a></li>
-    <li><a href="trickCenter?name=@Model.Name">Trick Center</a></li>
-    <li><a href="actionHistory?name=@Model.Name">Action History</a></li>
+    <img src="~/greenfox.png" />
 
-</ul>
+    <p>This is @Model.Name. Currently living on @Model.Food and @Model.Drink. He knows @Model.Tricks.Count tricks.</p>
 
-<img src="~/greenfox.png" />
+    <h1>Known Tricks</h1>
 
-<p>This is @Model.Name. Currently living on @Model.Food and @Model.Drink. He knows @Model.Tricks.Count tricks.</p>
-
-<h1>Known Tricks</h1>
-
-@if (@Model.Name.Equals("Mr.Green") && @Model.Food.Equals("salad") && @Model.Drink.Equals("water") && @Model.Tricks.Count == 0)
-{
-    <p>You know no tricks, yet. Go and learn some.</p>
-}
-else if (@Model.Tricks.Count == 0)
-{
-    <p>You know no tricks, yet. Go and learn some.</p>
-}
-else
-{
-    foreach (var trick in @Model.Tricks)
+    @if (@Model.Tricks.Count == 0)
     {
-        <ul>
-            <li>@trick</li>
-        </ul>
+        <p>You know no tricks, yet. Go and learn some.</p>
     }
-}
-
-
+    else
+    {
+        foreach (var trick in @Model.Tricks)
+        {
+            <ul>
+                <li>@trick</li>
+            </ul>
+        }
+    }
+</body>
+</html>

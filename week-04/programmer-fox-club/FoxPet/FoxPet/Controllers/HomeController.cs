@@ -2,25 +2,33 @@
 using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
-using FoxPet.Repositories;
+using FoxPet.Models;
+using FoxPet.Services;
 using Microsoft.AspNetCore.Mvc;
+using Microsoft.EntityFrameworkCore.Query.ExpressionTranslators.Internal;
 
 namespace FoxPet.Controllers
 {
     public class HomeController : Controller
     {
-        public static int index;
-        public static List<Fox> foxList = new List<Fox>();
+        private readonly IFoxServices FoxServices;
+
+        public HomeController()
+        {
+            FoxServices = new FoxServices();
+        }
 
         [HttpGet("/")]
-        public IActionResult Information()
+        public IActionResult Information(string name)
         {
-            if (foxList.Count == 0)
+            if (name == null)
             {
-                return RedirectToAction(nameof(Login));
+                return RedirectToAction("Login");
             }
+            
+            var currentFox = FoxServices.Find(name);
 
-            return View(foxList[index]);
+            return View(currentFox);
         }
 
         [HttpGet("/login")]
@@ -32,22 +40,17 @@ namespace FoxPet.Controllers
         [HttpPost("/login")]
         public IActionResult Login(string name)
         {
-            if (name == null || foxList.Contains(foxList.Find(x => x.Name.Equals(name))))
+            if (name == null)
             {
-                return RedirectToAction(nameof(Login));
+                return RedirectToAction("Login");
+            }
+            else if (!FoxServices.Contains(FoxServices.Find(name)))
+            {
+                FoxServices.Add(name);
+                return RedirectToAction("Login");
             }
 
-            foxList.Add(new Fox(name));
-
-            foreach (var fox in foxList)
-            {
-                if (fox.Name.Equals(name))
-                {
-                    index = Fox.Id;
-                }
-            }
-
-            return RedirectToAction(nameof(Information), new { name = foxList[index].Name });
+            return RedirectToAction("Information", new { name = name });
         }
     }
 }

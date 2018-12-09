@@ -2,13 +2,26 @@
 @{
     ViewData["Title"] = "Login";
 }
+<!doctype html>
+<style>
+    body {
+        text-align: center
+    }
+</style>
+<html>
+<head>
+    <title>Login</title>
+</head>
+<body>
+    <div class="content">
+        <h1>Welcome to Programmer Fox Club!</h1>
 
-<h2>Welcome to Programmer Fox Club!</h2>
+        <p>Please provide a name, so you can associate it to your pet!</p>
 
-<p>Please provide a name, so you can associate it to your pet!</p>
-
-<form asp-controller="Home" asp-action="Login" method="post">
-    Name <input type="text" name="Name"/>
-    <button type="submit">Go</button>
-</form>
-
+        <form asp-controller="Home" asp-action="Login" method="post">
+            Name <input type="text" name="name" />
+            <button type="submit">Go</button>
+        </form>
+    </div>
+</body>
+</html>
