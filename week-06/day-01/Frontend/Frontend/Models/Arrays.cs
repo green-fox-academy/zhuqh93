@@ -8,6 +8,7 @@ namespace Frontend.Models
     public class Arrays
     {
         public string What { get; set; }
+        public object Result { get; set; }
         public int[] Ints { get; set; }
         public string Error { get; set; }
     }

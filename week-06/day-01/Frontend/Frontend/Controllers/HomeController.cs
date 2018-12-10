@@ -28,10 +28,7 @@ namespace Frontend.Controllers
         [HttpGet("doubling")]
         public ActionResult<Doubling> Doubling([FromQuery] int input)
         {
-            if (input == 0)
-            {
-                return new Doubling { Error = "Please provide an input!" };
-            }
+            if (input == 0) return new Doubling { Error = "Please provide an input!" };
 
             return new Doubling { Received = input, Result = input * 2 };
         }
@@ -39,14 +36,8 @@ namespace Frontend.Controllers
         [HttpGet("greeter")]
         public ActionResult<Greeter> Greeter(string name, string title)
         {
-            if (name == null)
-            {
-                return new Greeter { Error = "Please provide a name!" };
-            }
-            else if (title == null)
-            {
-                return new Greeter { Error = "Please provide a title!" };
-            }
+            if (string.IsNullOrWhiteSpace(name)) return new Greeter { Error = "Please provide a name!" };
+            if (string.IsNullOrWhiteSpace(title)) return new Greeter { Error = "Please provide a title!" };
 
             return new Greeter { Name = name, Title = title, Welcome_message = $"Oh, hi there {name}, my dear {title}!" };
         }
@@ -54,46 +45,39 @@ namespace Frontend.Controllers
         [HttpGet("appenda/{appendable}")]
         public ActionResult<Appenda> Appenda(string appendable)
         {
-            if (appendable == null)
-            {
-                return NotFound();
-            }
+            if (string.IsNullOrWhiteSpace(appendable)) return NotFound();
 
             return new Appenda { Appendable = appendable, Appended = appendable + "a" };
         }
 
-        [HttpPost("dountil/{act}")]
-        public ActionResult<Dountil> Dountil(string act, int number)
+        [HttpPost("dountil/sum")]
+        public ActionResult<Dountil> Sum(int number)
         {
-            if (number == 0)
-            {
-                return new Dountil { Error = "Please provide a number!" };
-            }
-            else if (act == "sum")
-            {
-                return new Dountil { Action = "sum", Until = number, Result = frontendServices.Sum(number) };
-            }
-            else if (act == "factor")
-            {
-                return new Dountil { Action = "factor", Until = number, Result = frontendServices.Factor(number) };
-            }
+            if (number == 0) return new Dountil { Error = "Please provide a number!" };
 
-            return new Dountil();
+            return new Dountil { Until = number, Result = frontendServices.Sum(number) };
+        }
+
+        [HttpPost("dountil/factor")]
+        public ActionResult<Dountil> Factor(int number)
+        {
+            if (number == 0) return new Dountil { Error = "Please provide a number!" };
+
+            return new Dountil { Until = number, Result = frontendServices.Factor(number) };
         }
 
         [HttpPost("arrays")]
         public ActionResult<Arrays> Arrays(string what, int[] numbers)
         {
-            if (what == null)
-            {
-                return new Arrays { Error = "Please provide what to do with the numbers!" };
-            }
-            else if (numbers == null)
-            {
-                return new Arrays { Error = "Please provide numbers!" };
-            }
+            if (string.IsNullOrWhiteSpace(what) || (numbers == null)) return new Arrays { Error = "Please provide what to do with the numbers!" };
 
-            return new Arrays();
+            if (what.Equals("sum")) return new Arrays { What = what, Result = frontendServices.Sum(numbers) };
+
+            if (what.Equals("muliply")) return new Arrays { What = what, Result = frontendServices.Multiply(numbers) };
+
+            if (what.Equals("double")) return new Arrays { What = what, Result = frontendServices.Double(numbers) };
+
+            return BadRequest("Invalid operation.");
         }
     }
 }
