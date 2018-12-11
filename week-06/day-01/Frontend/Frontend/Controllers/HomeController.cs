@@ -14,9 +14,9 @@ namespace Frontend.Controllers
     {
         private readonly IFrontendServices frontendServices;
 
-        public HomeController()
+        public HomeController(IFrontendServices frontendServices)
         {
-            frontendServices = new FrontendServices();
+            this.frontendServices = frontendServices;
         }
 
         [HttpGet("")]
@@ -43,6 +43,7 @@ namespace Frontend.Controllers
         }
 
         [HttpGet("appenda/{appendable}")]
+        [HttpGet("appenda")]
         public ActionResult<Appenda> Appenda(string appendable)
         {
             if (string.IsNullOrWhiteSpace(appendable)) return NotFound();
@@ -51,31 +52,31 @@ namespace Frontend.Controllers
         }
 
         [HttpPost("dountil/sum")]
-        public ActionResult<Dountil> Sum(int number)
+        public ActionResult<Dountil> Sum(Dountil dountil)
         {
-            if (number == 0) return new Dountil { Error = "Please provide a number!" };
+            if (dountil.Until == 0) return new Dountil { Error = "Please provide a number!" };
 
-            return new Dountil { Until = number, Result = frontendServices.Sum(number) };
+            return new Dountil { Result = frontendServices.Sum(dountil.Until) };
         }
 
         [HttpPost("dountil/factor")]
-        public ActionResult<Dountil> Factor(int number)
+        public ActionResult<Dountil> Factor(Dountil dountil)
         {
-            if (number == 0) return new Dountil { Error = "Please provide a number!" };
+            if (dountil.Until == 0) return new Dountil { Error = "Please provide a number!" };
 
-            return new Dountil { Until = number, Result = frontendServices.Factor(number) };
+            return new Dountil { Result = frontendServices.Factor(dountil.Until) };
         }
 
         [HttpPost("arrays")]
-        public ActionResult<Arrays> Arrays(string what, int[] numbers)
+        public ActionResult<Arrays> Arrays(Arrays array)
         {
-            if (string.IsNullOrWhiteSpace(what) || (numbers == null)) return new Arrays { Error = "Please provide what to do with the numbers!" };
+            if (string.IsNullOrWhiteSpace(array.What) || (array.Numbers == null)) return new Arrays { Error = "Please provide what to do with the numbers!" };
 
-            if (what.Equals("sum")) return new Arrays { What = what, Result = frontendServices.Sum(numbers) };
+            if (array.What.Equals("sum")) return new Arrays { Result = frontendServices.Sum(array.Numbers) };
 
-            if (what.Equals("muliply")) return new Arrays { What = what, Result = frontendServices.Multiply(numbers) };
+            if (array.What.Equals("multiply")) return new Arrays { Result = frontendServices.Multiply(array.Numbers) };
 
-            if (what.Equals("double")) return new Arrays { What = what, Result = frontendServices.Double(numbers) };
+            if (array.What.Equals("double")) return new Arrays { Result = frontendServices.Double(array.Numbers) };
 
             return BadRequest("Invalid operation.");
         }

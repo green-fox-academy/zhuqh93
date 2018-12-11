@@ -9,7 +9,7 @@ namespace Frontend.Models
     {
         public string What { get; set; }
         public object Result { get; set; }
-        public int[] Ints { get; set; }
+        public int[] Numbers { get; set; }
         public string Error { get; set; }
     }
 }

@@ -3,7 +3,9 @@ Microsoft Visual Studio Solution File, Format Version 12.00
 # Visual Studio 15
 VisualStudioVersion = 15.0.28307.136
 MinimumVisualStudioVersion = 10.0.40219.1
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Frontend", "Frontend\Frontend.csproj", "{262FC37D-D1A6-4E5B-B568-5A0A16A173C3}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Frontend", "Frontend\Frontend.csproj", "{262FC37D-D1A6-4E5B-B568-5A0A16A173C3}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Frontend.Tests", "..\..\day-02\Frontend.Tests\Frontend.Tests.csproj", "{B8614C07-FBBD-4E81-BD39-D3178AD9C0BE}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -15,6 +17,10 @@ Global
 		{262FC37D-D1A6-4E5B-B568-5A0A16A173C3}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{262FC37D-D1A6-4E5B-B568-5A0A16A173C3}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{262FC37D-D1A6-4E5B-B568-5A0A16A173C3}.Release|Any CPU.Build.0 = Release|Any CPU
+		{B8614C07-FBBD-4E81-BD39-D3178AD9C0BE}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{B8614C07-FBBD-4E81-BD39-D3178AD9C0BE}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{B8614C07-FBBD-4E81-BD39-D3178AD9C0BE}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{B8614C07-FBBD-4E81-BD39-D3178AD9C0BE}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
