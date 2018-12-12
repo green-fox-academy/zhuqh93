@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Diagnostics.Contracts;
 using System.IO;
 using System.Linq;
 
@@ -13,50 +14,65 @@ namespace TodoApp
             string userInput = "";
             bool isNumeric;
 
-            while (!userInput.Equals("exit"))
+            Print();
+
+            while (!userInput.Equals("-e"))
             {
-                Console.WriteLine();
-                userInput = Console.ReadLine();
+                string @operator = "";
+                string content = "";
+
+                Console.WriteLine("Please enter your command: ");
+                userInput = Console.ReadLine().Trim();
                 Console.WriteLine();
 
-                if (userInput != null && userInput.Equals(""))
+                if (!string.IsNullOrWhiteSpace(userInput))
                 {
-                    Print();
+                    if (userInput.Length > 2)
+                    {
+                        @operator = userInput.Substring(0, 2).Trim();
+                        content = userInput.Substring(2, userInput.Length - 2).Trim();
+                    }
+                    else
+                        @operator = userInput;
                 }
-                else if (userInput.Equals("-l"))
+                else if (string.IsNullOrWhiteSpace(userInput))
                 {
+                    Console.WriteLine("Null argument, type '-h' for help.");
+                    @operator = "";
+                }
+                
+                if (@operator == "-l")
+                {
+                    if (!string.IsNullOrWhiteSpace(content)) Console.WriteLine("Wrong Listing syntax - but I'll list for you anyway :)\n");
+
                     List(path);
                 }
-                else if (userInput.Substring(0,2).Equals("-a"))
+                else if (@operator == "-a")
                 {
                     try
                     {
-                        if (userInput.Trim().Equals("-a"))
+                        if (string.IsNullOrWhiteSpace(content)) throw new Exception();
+                        else
                         {
-                            throw new Exception();
+                            content = content.Substring(1, content.Length - 2);
                         }
 
-                        Add(userInput.Substring(4, userInput.Length - 5), path);
+                        AddNew(content, path);
                     }
                     catch (Exception)
                     {
                         Console.WriteLine("Unable to add: no task provided");
                     }
-
-                }else if (userInput.Substring(0,2).Equals("-r"))
+                }
+                else if (@operator == "-r")
                 {
                     try
                     {
-                        isNumeric = int.TryParse(userInput.Trim().Substring(2), out int n);
+                        isNumeric = int.TryParse(content, out int n);
 
-                        if (userInput.Trim().Equals("-r"))
+                        if (string.IsNullOrWhiteSpace(content))
                         {
                             Console.WriteLine("Unable to remove: no index provided");
-                            throw new Exception();
-                        }
-                        else if (int.Parse(userInput.Trim().Substring(3)) > userInput.Length-1)
-                        {
-                            Console.WriteLine("Unable to remove: index is out of bound");
                             throw new Exception();
                         }
                         else if (!isNumeric)
@@ -64,28 +80,61 @@ namespace TodoApp
                             Console.WriteLine("Unable to remove: index is not a number");
                             throw new Exception();
                         }
-
-                        int index = int.Parse(userInput.Trim().Substring(3)) - 1;
-                        Remove(index, path);
+                        else if (int.Parse(content) > File.ReadAllLines(path).ToList().Count)
+                        {
+                            Console.WriteLine("Unable to remove: index is out of bound");
+                            throw new Exception();
+                        }
+                        else if (isNumeric)
+                        {
+                            int index = int.Parse(content) - 1;
+                            Remove(index, path);
+                        }
                     }
                     catch (Exception)
                     {
-                        // ignored
+                        Console.WriteLine("Sorry, please try again.");
                     }
                 }
-                else if (userInput.Substring(0, 2).Equals("-c"))
+                else if (@operator == "-c")
                 {
-                    int index = int.Parse(userInput.Trim().Substring(3)) - 1;
-                    Check(index, path);
+                    try
+                    {
+                        isNumeric = int.TryParse(content, out int n);
+
+                        if (string.IsNullOrWhiteSpace(content))
+                        {
+                            Console.WriteLine("Unable to check: no index provided");
+                            throw new Exception();
+                        }
+                        else if (!isNumeric)
+                        {
+                            Console.WriteLine("Unable to check: index is not a number");
+                            throw new Exception();
+                        }
+                        else if (int.Parse(content) > File.ReadAllLines(path).ToList().Count)
+                        {
+                            Console.WriteLine("Unable to check: index is out of bound");
+                            throw new Exception();
+                        }
+                        else if (isNumeric)
+                        {
+                            int index = int.Parse(content) - 1;
+                            Check(index, path);
+                        }
+                    }
+                    catch (Exception)
+                    {
+                        Console.WriteLine("Sorry, please try again.");
+                    }
                 }
-                else
-                {
-                    Console.WriteLine("Unsupported argument");
-                    Console.WriteLine();
-                    Print();
-                }
+                else if (@operator == "-h") PrintLite();
+                else if (@operator == "-e") break;
+                else if (@operator == "") { }
+                else Console.WriteLine("Unsupported argument");
+
+                Console.WriteLine();
             }
-            
         }
 
         static void Print()
@@ -96,71 +145,73 @@ namespace TodoApp
                               " -l   Lists all the tasks\n" +
                               " -a   Adds a new task\n" +
                               " -r   Removes an task\n" +
-                              " -c   Completes an task\n");
+                              " -c   Completes an task\n" +
+                              " -e   Exit the application\n" +
+                              " -h   Get help\n");
+        }
+
+        static void PrintLite()
+        {
+            Console.WriteLine("Command line arguments:\n" +
+                              " -l   Lists all the tasks\n" +
+                              " -a   Adds a new task\n" +
+                              " -r   Removes an task\n" +
+                              " -c   Completes an task\n" +
+                              " -e   Exit the application\n" +
+                              " -h   Get help");
         }
 
         static void List(string path)
         {
             if (!File.Exists(path))
-            {
-                using (File.Create(path))
-                {
-                }
-            }
+                using (File.Create(path)) { }
 
-            List<string> taskList = File.ReadAllLines(path).ToList();
-            
-            if (taskList.Count != 0)
-            {
-                for (int i = 0; i < taskList.Count; i++)
-                {
-                    Console.WriteLine($"{i + 1} - {taskList[i]}");
-                }
-            }
+            List<string> todoList = File.ReadAllLines(path).ToList();
+
+            if (todoList.Count != 0)
+                for (int i = 0; i < todoList.Count; i++) Console.WriteLine($"{i + 1} - {todoList[i]}");
             else
-            {
                 Console.WriteLine("No todos for today! :)");
-            }
         }
 
-        static void Add(string content, string path)
+        static void AddNew(string content, string path)
         {
-            using (StreamWriter writer = File.AppendText(path))
-            {
-                writer.WriteLine("[ ] " + content);
-            }
+            if (!File.Exists(path))
+                using (File.Create(path)) { }
+
+            using (StreamWriter writer = File.AppendText(path)) writer.WriteLine($"[ ] {content}");
+        }
+
+        static void AddExist(string content, string path)
+        {
+            if (!File.Exists(path))
+                using (File.Create(path)) { }
+
+            using (StreamWriter writer = File.AppendText(path)) writer.WriteLine(content);
         }
 
         static void Remove(int index, string path)
         {
-            List<string> taskList = File.ReadAllLines(path).ToList();
-            taskList.RemoveAt(index);
+            List<string> todoList = File.ReadAllLines(path).ToList();
+
+            todoList.RemoveAt(index);
+
             File.Delete(path);
-            
-            foreach (var task in taskList)
-            {
-                Add(task, path);
-            }
+
+            foreach (var task in todoList) AddExist(task, path);
         }
 
         static void Check(int index, string path)
         {
-            List<string> taskList = File.ReadAllLines(path).ToList();
+            List<string> todoList = File.ReadAllLines(path).ToList();
+
+            var todo = todoList[index];
+            todo = "[x" + todo.Substring(2, todo.Length - 2);
+            todoList[index] = todo;
+
             File.Delete(path);
 
-            for (int i = 0; i < taskList.Count; i++)
-            {
-                if (i == index)
-                {
-                    taskList[i] = "[x] " + taskList[i];
-                    Add(taskList[i], path);
-                }
-                else
-                {
-                    taskList[i] = "[ ] " + taskList[i];
-                    Add(taskList[i], path);
-                }
-            }
+            foreach (var t in todoList) AddExist(t, path);
         }
     }
 }
