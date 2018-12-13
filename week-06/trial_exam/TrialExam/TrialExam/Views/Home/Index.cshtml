@@ -1,0 +1,48 @@
+﻿@model SpaceTransporterViewModel
+@{
+    ViewData["Title"] = "Home Page";
+}
+
+<style>
+    table, th, td {
+        border: 2px solid black;
+        padding: 4px;
+        text-align: center;
+    }
+</style>
+<h2>Space Transporter</h2>
+
+<table>
+    <tr>
+        <th>Planet</th>
+        <th>Population</th>
+        <th>Spaceship location</th>
+        <th>People on ship</th>
+    </tr>
+
+    @foreach (var planet in @Model.PlanetList)
+    {
+        <tr>
+            <td>@planet.Name</td>
+            <td>@planet.Population</td>
+            @if (@planet.Name == @Model.Spaceship.Location)
+            {
+                <td>
+                    <a asp-controller="Home" asp-action="ToPlanet">← to planet</a>
+                    <span>|</span>
+                    <a asp-controller="Home" asp-action="ToShip">to ship →</a>
+                </td>
+                <td>@Model.Spaceship.CurrentPassengers</td>
+            }
+            else
+            {
+                <td>
+                    <form asp-controller="Home" asp-action="MoveHere" asp-route-id="@planet.PlanetId" method="post">
+                        <button type="submit">Move here</button>
+                    </form>
+                </td>
+                <td>-</td>
+            }
+        </tr>
+    }
+</table>
