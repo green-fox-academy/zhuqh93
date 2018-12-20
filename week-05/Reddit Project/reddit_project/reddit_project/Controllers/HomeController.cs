@@ -1,6 +1,7 @@
 ﻿using System.Collections.Generic;
 using System.Diagnostics;
 using System.Linq;
+using System.Threading.Tasks;
 using Microsoft.AspNetCore.Mvc;
 using reddit_project.Models;
 using reddit_project.Services;
@@ -18,10 +19,10 @@ namespace reddit_project.Controllers
         }
 
         [HttpGet("")]
-        public IActionResult Index(int pageIndex)
+        public async Task<IActionResult> Index(int pageIndex)
         {
             ViewModel model = new ViewModel();
-            model.Posts = postServices.FindAll();
+            model.Posts = await postServices.FindAll();
             model.PageCount = model.Posts.Count();
             model.PageIndex = pageIndex == 0 ? 1 : pageIndex;
 
@@ -29,17 +30,17 @@ namespace reddit_project.Controllers
         }
 
         [HttpGet]
-        public IActionResult UpVote(int postId, int pageIndex)
+        public async Task<IActionResult> UpVote(int postId, int pageIndex)
         {
-            postServices.UpVote(postId);
+            await postServices.UpVote(postId);
 
             return RedirectToAction("Index", new { pageIndex = pageIndex });
         }
 
         [HttpGet]
-        public IActionResult DownVote(int postId, int pageIndex)
+        public async Task<IActionResult> DownVote(int postId, int pageIndex)
         {
-            postServices.DownVote(postId);
+            await postServices.DownVote(postId);
 
             return RedirectToAction("Index", new { pageIndex = pageIndex });
         }
@@ -51,9 +52,9 @@ namespace reddit_project.Controllers
         }
 
         [HttpPost("submit")]
-        public IActionResult Submit(Post post)
+        public async Task<IActionResult> Submit(Post post)
         {
-            postServices.Add(post);
+            await postServices.Add(post);
 
             return RedirectToAction("Index");
         }

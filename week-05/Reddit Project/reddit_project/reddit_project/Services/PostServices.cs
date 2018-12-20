@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
+using Microsoft.EntityFrameworkCore;
 using reddit_project.Models;
 
 namespace reddit_project.Services
@@ -15,12 +16,12 @@ namespace reddit_project.Services
             this.ApplicationContext = applicationContext;
         }
 
-        public IEnumerable<Post> FindAll()
+        public async Task<IEnumerable<Post>> FindAll()
         {
-            return ApplicationContext.Posts;
+            return await ApplicationContext.Posts.ToListAsync();
         }
 
-        public void Add(Post post)
+        public async Task Add(Post post)
         {
             Post newPost = new Post
             {
@@ -28,22 +29,22 @@ namespace reddit_project.Services
                 Url = post.Url
             };
 
-            ApplicationContext.Posts.Add(newPost);
-            ApplicationContext.SaveChanges();
+            await ApplicationContext.Posts.AddAsync(newPost);
+            await ApplicationContext.SaveChangesAsync();
         }
 
-        public void UpVote(long id)
+        public async Task UpVote(long id)
         {
-            var postFromTheDB = ApplicationContext.Posts.Find(id);
+            var postFromTheDB = await ApplicationContext.Posts.FindAsync(id);
             postFromTheDB.Vote++;
-            ApplicationContext.SaveChanges();
+            await ApplicationContext.SaveChangesAsync();
         }
 
-        public void DownVote(long id)
+        public async Task DownVote(long id)
         {
-            var postFromTheDB = ApplicationContext.Posts.Find(id);
+            var postFromTheDB = await ApplicationContext.Posts.FindAsync(id);
             postFromTheDB.Vote--;
-            ApplicationContext.SaveChanges();
+            await ApplicationContext.SaveChangesAsync();
         }
 
         //        public void Add(string title, string url)
