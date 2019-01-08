@@ -1,0 +1,20 @@
+﻿
+@{
+    ViewData["Title"] = "CreateRecipe";
+}
+
+<h1>Create a new Recipe</h1>
+
+<form asp-controller="Home" asp-action="CreateRecipe97679679">
+    <label>Name</label><br />
+    <input type="text" maxlength="50" required/>
+    <br /><br />
+    <label>Description</label><br />
+    <textarea rows="2" cols="100" required></textarea>
+    <br /><br />
+    <label>Ingredients</label><br />
+    <textarea rows="10" cols="100" placeholder="  Put each ingredient on its own line." required></textarea>
+    <br /><br />
+    <button type="submit">Create</button>
+</form>
+

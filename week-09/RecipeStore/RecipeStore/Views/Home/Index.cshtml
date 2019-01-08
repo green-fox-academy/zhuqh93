@@ -1,0 +1,15 @@
+﻿@model IEnumerable<Recipe>
+@{
+    ViewData["Title"] = "Home Page";
+}
+
+<body style="align-content: center">
+    <h1>Recipe Colletion</h1>
+
+    @foreach (var recipe in Model)
+    {
+        <h3><a>@recipe.Name</a></h3>
+        <p>@recipe.Description</p>
+    }
+</body>
+
